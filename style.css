@@ -1,0 +1,161 @@
+html {
+     min-height: 97%;
+}
+ body {
+     background:#228B22;
+     color:#fff;
+     text-align:center;
+     font-family: 'Cutive Mono', monospace;
+     position:relative;
+     height:97%;
+     min-height: 97vh;
+}
+ .wrapper {
+     max-width:900px;
+     margin: 0 auto;
+}
+ #password {
+     padding:80px 0;
+     font-size:70px;
+     line-height:80px;
+     max-width:100%;
+     word-wrap: break-word;
+}
+ .controls {
+     display:block;
+     width:100%;
+     position: absolute;
+     bottom:0;
+     left:0;
+     width:100%;
+}
+ .reset {
+     text-align:center;
+     display:block;
+     margin: 15px auto 0;
+     transition: 0.70s;
+	-webkit-transition: .30s;
+	-moz-transition: .30s;
+	-ms-transition: .30s;
+	-o-transition: .30s;
+	-webkit-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+	-ms-transform: rotate(0deg);
+	transform: rotate(0deg);
+}
+.reset:active {
+	transition: 0.70s;
+	-webkit-transition: .30s;
+	-moz-transition: .30s;
+	-ms-transition: .30s;
+	-o-transition: .30s;
+	-webkit-transform: rotate(40deg);
+	-moz-transform: rotate(40deg);
+	-o-transform: rotate(40deg);
+	-ms-transform: rotate(40deg);
+	transform: rotate(40deg);
+}
+ .number-container {
+     text-align:center;
+}
+
+ .checks {
+     margin: 50px auto;
+     text-align:center;
+     width:100%;
+}
+ a {
+     color:#fff;
+}
+ input[type="number"] {
+     background:transparent;
+     color:#fff;
+     border:0;
+     border-bottom:1px solid #fff;
+     max-width:50px;
+     font-size:28px;
+     text-align:center;
+}
+ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+     -webkit-appearance: none!important;
+     -moz-appearance: none!important;
+     appearance: none!important;
+     margin: 0;
+}
+ input[type=number] {
+     -moz-appearance:textfield;
+}
+ input[type="number"]:focus {
+     outline:none;
+}
+ .clearfix:after {
+     clear: both;
+     height: 0;
+     display: block;
+     visibility: hidden;
+     content: ".";
+}
+ button {
+     border: 1px solid #fff;
+     color:#fff;
+     font-family: 'Cutive Mono', monospace;
+     opacity:.8;
+     background:transparent;
+     padding:10px 30px;
+     text-align:center;
+     display:inline-block;
+     margin: 110px auto 0;
+     -webkit-transition: all .3s ease-in-out;
+     -moz-transition: all .3s ease-in-out;
+     -o-transition: all .3s ease-in-out;
+     transition: all .3s ease-in-out;
+     cursor:hand;
+     cursor:pointer;
+     font-size:17px;
+}
+ button:hover {
+     opacity:1;
+}
+ button:active {
+     background:#fff;
+     color:#228B22;
+}
+ .clearfix {
+    display:inline-block;
+}
+
+
+ @media screen and (max-width: 1300px) {
+ 	#password { font-size:55px; }
+ 	}
+ @media screen and (max-width: 767px) {
+     #password {
+         font-size:40px;
+         line-height:50px;
+         padding:50px 0;
+    }
+     .controls {
+         position:relative;
+         bottom:auto;
+         left:auto;
+         margin:100px auto;
+         text-align:center;
+    }
+     .pretty {
+         display:block;
+         width:100%;
+         text-align:left;
+         max-width:260px;
+         margin: 0 auto 10px;
+    }
+}
+ @media screen and (max-width: 480px) {
+     #password {
+         font-size:30px;
+         line-height:40px;
+         padding:20px 0;
+    }
+    .controls { margin: 30px auto; }
+    button { margin-top:50px; }
+}

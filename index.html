@@ -1,0 +1,189 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <!-- created by Jess - jessnunez.dev -->
+	<meta charset="UTF-8" />
+	<title>Simple Password Generator</title>
+    <meta name="description" content="A quick and easy password generator.  No muss, no fuss."/>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="icon.png" />
+	<link href="https://fonts.googleapis.com/css?family=Cutive+Mono&display=swap" rel="stylesheet"> 
+	<link href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://icono-49d6.kxcdn.com/icono.min.css"> 
+	<link href="style.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101206384);</script>
+    <script async src="//static.getclicky.com/js"></script>
+</head>
+<body>
+<div class="wrapper">
+
+    <div id="password"></div>
+    <div class="reset"><a href="#" class="btn icono-reset">new password</a></div>
+    <div class="copy"><button onclick="copyToClipboard('#password')">copy</button></div>
+
+    <div class="controls clearfix">
+    	<div class="number-container"><label>number of characters:</label> <input type="number" name="option" min="1" max="30" value="16" id="number" /></div>
+
+    	<div class="checks">
+    		<div class="pretty p-default">
+    		    <input type="checkbox" checked id="uppercase" name="options" />
+    		    <div class="state">
+    		        <label>uppercase</label>
+    		    </div>
+    		</div>
+
+    		<div class="pretty p-default">
+    		    <input type="checkbox" checked id="lowercase" name="options" />
+    		    <div class="state">
+    		        <label>lowercase</label>
+    		    </div>
+    		</div>
+
+            <div class="pretty p-default">
+                <input type="checkbox" checked id="digits" name="options" />
+                <div class="state">
+                    <label>numbers</label>
+                </div>
+            </div>
+
+    		<div class="pretty p-default">
+    		    <input type="checkbox" checked id="special" name="options" />
+    		    <div class="state">
+    		        <label>special characters</label>
+    		    </div>
+    		</div>
+    	</div><!-- end checkbox wrapper -->
+
+    </div><!-- end controls wrapper -->
+
+</div><!-- end wrapper -->
+
+<script>
+var number = 16;
+var char = "&^%$#@!*()+~?<>abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789";
+
+function newPassword() {
+    var length = number,
+        charset = char,
+        retVal = "";
+    for (var i = 0, n = charset.length; i < length; ++i) {
+        retVal += charset.charAt(Math.floor(Math.random() * n));
+    }
+    return retVal;
+}
+
+// Default show password
+$('#password').html($('#password').html() + newPassword());
+
+// Generate a new password
+$('.btn').click(function() {
+    $('#password').html('');
+    $('#password').html($('#password').html() + newPassword());
+    console.log(number);
+});
+
+// Change password length
+$("#number").on("keyup change", function() {
+    number = $(this).val();
+    console.log(number);
+    $('#password').html('');
+    $('#password').html($('#password').html() + newPassword());
+});
+
+// Checkbox for uppercase letters
+$('#uppercase').change(function() {
+    if (this.checked) {
+        // add uppercase letters to characters
+        char += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        console.log(number);
+        $('#password').html('');
+        $('#password').html($('#password').html() + newPassword());
+    } else {
+        // remove uppercase letters from characters
+        var str = char;
+        var newStr = str.replace('ABCDEFGHIJKLMNOPQRSTUVWXYZ', '');
+        char = newStr;
+        console.log(number);
+        $('#password').html('');
+        $('#password').html($('#password').html() + newPassword());
+    }
+});
+
+// Checkbox for lowercase letters
+$('#lowercase').change(function() {
+    if (this.checked) {
+        // add lowercase letters to characters
+        char += 'abcdefghijklmnopqrstuvwxyz';
+        console.log(number);
+        $('#password').html('');
+        $('#password').html($('#password').html() + newPassword());
+    } else {
+        // remove lowercase letters from characters
+        var str1 = char;
+        var newStr1 = str1.replace('abcdefghijklmnopqrstuvwxyz', '');
+        char = newStr1;
+        console.log(number);
+        $('#password').html('');
+        $('#password').html($('#password').html() + newPassword());
+    }
+});
+
+// Checkbox for special characters
+$('#special').change(function() {
+    if (this.checked) {
+        // add special characters
+        char += '&^%$#@!*()+~?<>';
+        console.log(number);
+        $('#password').html('');
+        $('#password').html($('#password').html() + newPassword());
+    } else {
+        // remove special characters
+        var str2 = char;
+        var newStr2 = str2.replace('&^%$#@!*()+~?<>', '');
+        char = newStr2;
+        console.log(number);
+        $('#password').html('');
+        $('#password').html($('#password').html() + newPassword());
+    }
+});
+
+// Checkbox for numbers
+$('#digits').change(function() {
+    if (this.checked) {
+        // add numbers
+        char += '123456789';
+        console.log(number);
+        $('#password').html('');
+        $('#password').html($('#password').html() + newPassword());
+    } else {
+        // remove numbers
+        var str3 = char;
+        var newStr3 = str3.replace('123456789', '');
+        char = newStr3;
+        console.log(number);
+        $('#password').html('');
+        $('#password').html($('#password').html() + newPassword());
+    }
+});
+
+// Copy password to clipboard
+function copyToClipboard(element) {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($(element).text()).select();
+    document.execCommand("copy");
+    $temp.remove();
+}
+
+// Reset page settings on reload
+function resetValues() {
+    $('input:checkbox[name="options"]').prop('checked',true);
+    $('#number').val('16');
+}
+window.onload = resetValues;
+
+</script>
+
+</body>
+</html>
